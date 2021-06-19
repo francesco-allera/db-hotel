@@ -20,11 +20,11 @@ WHERE `date_of_birth` >= '1988-01-01';
 
 
 3. Seleziona tutti gli ospiti che hanno più di 20 anni (al momento
-dell’esecuzione della query)
+dell'esecuzione della query)
 
 SELECT *
 FROM `ospiti`
-WHERE `date_of_birth` >= (CURDATE() - INTERVAL 20 YEAR);
+WHERE `date_of_birth` <= (CURDATE() - INTERVAL 20 YEAR);
 
 
 -----------------------------------------------------------------
@@ -63,7 +63,8 @@ FROM `pagamenti`;
 
 SELECT *
 FROM `ospiti`
-WHERE YEAR(`date_of_birth`) = 1975;
+WHERE `document_type` = "Driver License"
+  AND YEAR(`date_of_birth`) = 1975;
 
 
 -----------------------------------------------------------------
@@ -79,7 +80,7 @@ WHERE `ospite_id` IS NOT NULL;
 -----------------------------------------------------------------
 
 
-9. Quanti posti letto ha l’hotel in totale?
+9. Quanti posti letto ha l'hotel in totale?
 
 SELECT SUM(`beds`) AS `Total Beds`
 FROM `stanze`;
